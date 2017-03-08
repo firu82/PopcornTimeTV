@@ -88,6 +88,7 @@
 		4D0F9DC51E6F30ED00860852 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA42DD11DD8EF7A00933A10 /* Dictionary+Extension.swift */; };
 		4D0F9DC61E6F30F000860852 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0F9D4A1E6F2B1300860852 /* String+Extension.swift */; };
 		4D0F9DC71E6F32B300860852 /* PopcornKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0F9D321E6F29E500860852 /* PopcornKit.framework */; };
+		4D0F9DCA1E70537A00860852 /* CGSize+Min.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D859B921DDFA162000E2AA1 /* CGSize+Min.swift */; };
 		4D11C5071E31409100CF9182 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D11C5061E31409100CF9182 /* CollectionViewController.swift */; };
 		4D17C2C31E509C4A00B61902 /* Show+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D859BB31DDFA1C6000E2AA1 /* Show+Extension.swift */; };
 		4D1B88A51E3BD42B00DB701D /* ResponsiveCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B88A41E3BD42B00DB701D /* ResponsiveCollectionViewController.swift */; };
@@ -457,7 +458,7 @@
 		4D859B8F1DDFA162000E2AA1 /* PCTPlayerViewController+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PCTPlayerViewController+iOS.swift"; sourceTree = "<group>"; };
 		4D859B901DDFA162000E2AA1 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "../UI/iOS/Extensions/UIView+Extension.swift"; sourceTree = "<group>"; };
 		4D859B911DDFA162000E2AA1 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
-		4D859B921DDFA162000E2AA1 /* CGSize+Min.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Min.swift"; sourceTree = "<group>"; };
+		4D859B921DDFA162000E2AA1 /* CGSize+Min.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGSize+Min.swift"; path = "../UI/iOS/Extensions/CGSize+Min.swift"; sourceTree = "<group>"; };
 		4D859B931DDFA162000E2AA1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "../UI/iOS/Extensions/UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4D859BAB1DDFA1AD000E2AA1 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4D859BAD1DDFA1B7000E2AA1 /* SubtitlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitlesViewController.swift; sourceTree = "<group>"; };
@@ -656,6 +657,7 @@
 		28EB626A1CA3362B00985F78 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4D859B921DDFA162000E2AA1 /* CGSize+Min.swift */,
 				4D859B931DDFA162000E2AA1 /* UIImage+Extension.swift */,
 				4D0F9D4A1E6F2B1300860852 /* String+Extension.swift */,
 				4D7C7E1E1E6C386C0095D0DF /* NSObject+Swift_Observer.h */,
@@ -876,7 +878,6 @@
 				4DBE60991E5E5F8A00C2549B /* ShowDetailViewController+iOS.swift */,
 				4D9995611E5CAD51005C432A /* SearchViewController+iOS.swift */,
 				4D859B8F1DDFA162000E2AA1 /* PCTPlayerViewController+iOS.swift */,
-				4D859B921DDFA162000E2AA1 /* CGSize+Min.swift */,
 				4D8C4B871E47AD1A004872F8 /* Number+Extension.swift */,
 				4D8C4B891E47BE78004872F8 /* UIScreen+AspectRatio.swift */,
 				4DE9E06B1E3D12E600806522 /* UICollectionViewLayoutAttributes+Color.swift */,
@@ -1664,6 +1665,7 @@
 				4D99957B1E5E007A005C432A /* TVAppDocumentControllerAnimatedTransitioning.swift in Sources */,
 				4D784D5C1E5FA4B9009E3423 /* NSMutableString+Extension.swift in Sources */,
 				4D9995631E5CC0A8005C432A /* PersonViewController.swift in Sources */,
+				4D0F9DCA1E70537A00860852 /* CGSize+Min.swift in Sources */,
 				4D859BB71DDFA1C6000E2AA1 /* Show+Extension.swift in Sources */,
 				4D7C7E201E6C386C0095D0DF /* NSObject+Swift_Observer.m in Sources */,
 				4DBE60911E5E54BB00C2549B /* ShowDetailViewController.swift in Sources */,
