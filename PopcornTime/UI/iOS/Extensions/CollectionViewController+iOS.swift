@@ -20,16 +20,20 @@ extension CollectionViewController {
     var isRefreshable: Bool  {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.isRefreshableKey) as? Bool ?? false
-        } set (bool) {
-            objc_setAssociatedObject(self, &AssociatedKeys.isRefreshableKey, bool, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        } set (refreshable) {
+            objc_setAssociatedObject(self, &AssociatedKeys.isRefreshableKey, refreshable, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
-            if bool {
+            if refreshable {
                 refreshControl = refreshControl ?? {
                     let refreshControl = UIRefreshControl()
                     refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-                    collectionView?.addSubview(refreshControl)
+                    if #available(iOS 10.0, *) {
+                        collectionView?.refreshControl = refreshControl
+                    } else {
+                        collectionView?.addSubview(refreshControl)
+                    }
                     return refreshControl
-                    }()
+                }()
             } else {
                 refreshControl?.removeFromSuperview()
                 refreshControl = nil

@@ -156,6 +156,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UpdateManagerDelegate, UI
     }
     
     func open(cydiaUrl url: URL) {
-        UIApplication.shared.open(url, options: [:])
+        if #available(iOS 10.0, tvOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }
