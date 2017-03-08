@@ -10,7 +10,6 @@ def pods
     pod 'Alamofire', '~> 4.2.0'
     pod 'AlamofireImage', '~> 3.2.0'
     pod 'SwiftyTimer', '~> 2.0.0'
-    pod 'CSStickyHeaderFlowLayout', '~> 0.2.11-1'
     pod 'FloatRatingView', '~> 2.0.1'
     pod 'Reachability', :git => 'https://github.com/tonymillion/Reachability'
     pod 'MarqueeLabel/Swift', '~> 3.0.0'

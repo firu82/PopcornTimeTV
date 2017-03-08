@@ -3,7 +3,6 @@
 import UIKit
 import PopcornKit
 import AlamofireImage
-import CSStickyHeaderFlowLayout
 
 class ContinueWatchingCollectionReusableView: UICollectionReusableView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ContinueWatchingCollectionViewCellDelegate {
     
@@ -15,6 +14,21 @@ class ContinueWatchingCollectionReusableView: UICollectionReusableView, UICollec
     
     var minItemSize: CGSize {
         return UIDevice.current.userInterfaceIdiom == .tv ? CGSize(width: 850, height: 350) : CGSize(width: 420, height: 260)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        if let parentCollectionView = self.superview as? UICollectionView,
+            let layout = parentCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            
+            let itemHeight = self.collectionView(self.collectionView, layout: layout, sizeForItemAt: IndexPath(item: 0, section: 0)).height
+            let section = layout.sectionInset
+            let content = self.collectionView.contentInset
+            
+            let size   = CGSize(width: parentCollectionView.bounds.width, height: itemHeight + section.top + section.bottom + content.top + content.bottom)
+            
+            return self.onDeck.isEmpty ? .min : size
+        }
+        return .min
     }
     
     override func awakeFromNib() {
@@ -152,17 +166,11 @@ class ContinueWatchingCollectionReusableView: UICollectionReusableView, UICollec
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if let parentCollectionView = self.superview as? UICollectionView,
-            let layout = parentCollectionView.collectionViewLayout as? CSStickyHeaderFlowLayout {
-            
-            let itemHeight = self.collectionView(self.collectionView, layout: self.collectionView.collectionViewLayout, sizeForItemAt: IndexPath(item: 0, section: 0)).height
-            let section = (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-            let content = self.collectionView.contentInset
-            
-            let size   = CGSize(width: parentCollectionView.bounds.width, height: itemHeight + section.top + section.bottom + content.top + content.bottom)
-            
-            layout.parallaxHeaderMinimumReferenceSize = self.onDeck.isEmpty ? .zero : size
-            layout.parallaxHeaderReferenceSize        = self.onDeck.isEmpty ? .zero : size
+        
+        invalidateIntrinsicContentSize()
+        
+        if let parentCollectionView = self.superview as? UICollectionView {
+            parentCollectionView.performBatchUpdates(nil)
         }
     }
     

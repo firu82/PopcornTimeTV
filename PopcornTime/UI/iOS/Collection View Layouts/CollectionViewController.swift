@@ -2,7 +2,6 @@
 
 import Foundation
 import PopcornKit
-import CSStickyHeaderFlowLayout
 import AlamofireImage
 
 protocol CollectionViewControllerDelegate: class {
@@ -61,17 +60,9 @@ class CollectionViewController: ResponsiveCollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let collectionView = collectionView, let layout = collectionView.collectionViewLayout as? CSStickyHeaderFlowLayout {
+        if let collectionView = collectionView, let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             if let nib = delegate?.collectionView(nibForHeaderInCollectionView: collectionView) {
-                let size = CGSize(width: collectionView.bounds.width, height: 0)
-                
-                layout.parallaxHeaderReferenceSize = size
-                layout.parallaxHeaderMinimumReferenceSize = size
-                
-                layout.disableStickyHeaders = true
-                layout.disableStretching = true
-                
-                collectionView.register(nib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "stickyHeader")
+                collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "stickyHeader")
             } else {
                 layout.sectionHeadersPinToVisibleBounds = true
             }
@@ -143,27 +134,36 @@ class CollectionViewController: ResponsiveCollectionViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return delegate?.collectionView(collectionView, titleForHeaderInSection: section) != nil && collectionView.numberOfItems(inSection: section) != 0 ? CGSize(width: collectionView.bounds.width, height: 40) : .zero
+        if delegate?.collectionView(collectionView, titleForHeaderInSection: section) != nil {
+            return collectionView.numberOfItems(inSection: section) != 0 ? CGSize(width: collectionView.bounds.width, height: 40) : .zero
+        } else if delegate?.collectionView(nibForHeaderInCollectionView: collectionView) != nil {
+            return continueWatchingCollectionReusableView?.intrinsicContentSize ?? .min
+        }
+        return .zero
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader, let title = delegate?.collectionView(collectionView, titleForHeaderInSection: indexPath.section) {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath)
-            
-            let label = header.viewWithTag(1) as? UILabel
-            label?.text = title
-            
-            return header
-        } else if kind == CSStickyHeaderParallaxHeader {
-            continueWatchingCollectionReusableView = continueWatchingCollectionReusableView ?? {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "stickyHeader", for: indexPath) as! ContinueWatchingCollectionReusableView
-                if let parent = parent {
-                    header.type = type(of: parent) == MoviesViewController.self ? .movies : .episodes
-                }
+        if kind == UICollectionElementKindSectionHeader {
+            if let title = delegate?.collectionView(collectionView, titleForHeaderInSection: indexPath.section) {
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath)
+                
+                let label = header.viewWithTag(1) as? UILabel
+                label?.text = title
+                
                 return header
-            }()
-            continueWatchingCollectionReusableView?.refreshOnDeck()
-            return continueWatchingCollectionReusableView!
+            } else {
+                continueWatchingCollectionReusableView = continueWatchingCollectionReusableView ?? {
+                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "stickyHeader", for: indexPath) as! ContinueWatchingCollectionReusableView
+                    if let parent = parent {
+                        header.type = type(of: parent) == MoviesViewController.self ? .movies : .episodes
+                    }
+                    return header
+                }()
+                
+                continueWatchingCollectionReusableView!.refreshOnDeck()
+                
+                return continueWatchingCollectionReusableView!
+            }
         }
         return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
     }
