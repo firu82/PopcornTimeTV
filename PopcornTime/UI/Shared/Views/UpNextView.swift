@@ -31,17 +31,12 @@ class UpNextView: UIVisualEffectView {
     @IBOutlet var countdownView: MBCircularProgressBarView!
     #endif
     
-    var viewToFocus: UIView? = nil {
-        didSet {
-            guard viewToFocus != nil else { return }
-            setNeedsFocusUpdate()
-            updateFocusIfNeeded()
-        }
-    }
+    var environmentsToFocus: [UIFocusEnvironment] = []
     
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        return [viewToFocus].flatMap({$0})
+        return environmentsToFocus.isEmpty ? super.preferredFocusEnvironments : environmentsToFocus
     }
+    
     func show() {
         guard isHidden else { return }
         isHidden = false
@@ -49,7 +44,9 @@ class UpNextView: UIVisualEffectView {
         expandedConstraint.priority = 999
         delegate?.constraintsWereUpdated(willHide: false)
         startTimer()
-        viewToFocus = watchNowButton
+        environmentsToFocus = [watchNowButton]
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
     }
     
     func hide() {

@@ -99,12 +99,7 @@ class DetailViewController: UIViewController, PCTPlayerViewControllerDelegate, C
             focusButtonsGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             focusButtonsGuide.bottomAnchor.constraint(equalTo: backgroundVisualEffectView!.topAnchor).isActive = true
             
-            if #available(tvOS 10, *) {
-                focusButtonsGuide.preferredFocusEnvironments = itemViewController.preferredFocusEnvironments
-            } else {
-                focusButtonsGuide.preferredFocusedView = itemViewController.preferredFocusEnvironments.first as? UIView
-            }
-            
+            focusButtonsGuide.preferredFocusEnvironments = itemViewController.preferredFocusEnvironments
         #endif
         
         navigationItem.title = currentItem.title

@@ -38,8 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UpdateManagerDelegate, UI
         
         #if os(tvOS)
             if let url = launchOptions?[.url] as? URL {
-                self.application(.shared, open: url)
-                return true
+                return self.application(.shared, open: url)
             }
         #elseif os(iOS)
             NetworkActivityIndicatorManager.shared.isEnabled = true
@@ -75,7 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UpdateManagerDelegate, UI
         return true
     }
     
-    @discardableResult func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         #if os(tvOS)
             if url.scheme == "PopcornTime" {
                 guard
@@ -156,6 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UpdateManagerDelegate, UI
     }
     
     func open(cydiaUrl url: URL) {
-        UIApplication.shared.openURL(url)
+        UIApplication.shared.open(url, options: [:])
     }
 }
