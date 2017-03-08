@@ -221,6 +221,6 @@ extension UIAlertController {
         window.rootViewController = UIViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         window.makeKeyAndVisible()
-        window.rootViewController!.present(self, animated: true, completion: nil)
+        window.rootViewController!.present(self, animated: true)
     }
 }

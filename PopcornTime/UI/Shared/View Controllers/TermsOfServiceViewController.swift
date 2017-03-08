@@ -17,7 +17,7 @@ class TermsOfServiceViewController: UIViewController {
     
     @IBAction func accepted(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "tosAccepted")
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func canceled(_ sender: UIButton) {

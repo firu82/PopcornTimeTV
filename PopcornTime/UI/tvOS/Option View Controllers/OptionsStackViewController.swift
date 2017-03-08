@@ -170,7 +170,7 @@ class OptionsStackViewController: UIViewController, UITableViewDelegate {
                 viewToFocus = tabBar.subviews.first(where: {$0 is UIScrollView})?.subviews[safe: index]
             }
         } else {
-           dismiss(animated: true, completion: nil)
+           dismiss(animated: true)
         }
     }
     

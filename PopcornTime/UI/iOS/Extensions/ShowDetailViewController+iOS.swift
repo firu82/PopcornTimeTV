@@ -27,6 +27,6 @@ extension ShowDetailViewController {
         controller.preferredAction = controller.actions.first(where: {$0.title == "Season \(self.currentSeason)"})
         controller.popoverPresentationController?.sourceView = sender
         
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 }

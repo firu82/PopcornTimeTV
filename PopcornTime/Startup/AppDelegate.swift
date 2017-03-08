@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UpdateManagerDelegate, UI
         if !UserDefaults.standard.bool(forKey: "tosAccepted") {
             let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "TermsOfServiceNavigationController")
             window?.makeKeyAndVisible()
-            window?.rootViewController?.present(vc, animated: false, completion: nil)
+            window?.rootViewController?.present(vc, animated: false)
             UserDefaults.standard.set(0.75, forKey: "themeSongVolume")
         }
         

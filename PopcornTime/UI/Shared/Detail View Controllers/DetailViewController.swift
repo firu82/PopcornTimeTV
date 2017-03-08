@@ -199,7 +199,7 @@ class DetailViewController: UIViewController, PCTPlayerViewControllerDelegate, C
             
             // Make sure we're not already presenting a view controller.
             if presentedViewController != nil {
-                dismiss(animated: false, completion: nil)
+                dismiss(animated: false)
             }
             
             let storyboard = UIStoryboard.main

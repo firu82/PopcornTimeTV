@@ -76,7 +76,7 @@ extension DetailViewController {
     }
     
     func presentCastPlayer(_ media: Media, videoFilePath: URL) {
-        dismiss(animated: true, completion: nil) // Close player view controller first.
+        dismiss(animated: true) // Close player view controller first.
         let castPlayerViewController = storyboard?.instantiateViewController(withIdentifier: "CastPlayerViewController") as! CastPlayerViewController
         castPlayerViewController.media = media
         castPlayerViewController.directory = videoFilePath.deletingLastPathComponent()

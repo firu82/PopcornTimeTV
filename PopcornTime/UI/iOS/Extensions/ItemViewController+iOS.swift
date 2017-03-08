@@ -45,7 +45,7 @@ extension ItemViewController {
     @IBAction func playTrailer() {
         guard let id = (media as? Movie)?.trailerCode else { return }
         let vc = XCDYouTubeVideoPlayerViewController(videoIdentifier: id)
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

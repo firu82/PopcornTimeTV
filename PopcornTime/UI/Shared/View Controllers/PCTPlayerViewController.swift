@@ -186,7 +186,7 @@ class PCTPlayerViewController: UIViewController, VLCMediaPlayerDelegate, UIGestu
         
         setProgress(status: .finished)
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     // MARK: - Public vars
@@ -298,7 +298,7 @@ class PCTPlayerViewController: UIViewController, VLCMediaPlayerDelegate, UIGestu
                 self.mediaplayer.play()
             }))
             continueWatchingAlert.popoverPresentationController?.sourceView = progressBar
-            present(continueWatchingAlert, animated: true, completion: nil)
+            present(continueWatchingAlert, animated: true)
         } else {
             mediaplayer.play()
         }

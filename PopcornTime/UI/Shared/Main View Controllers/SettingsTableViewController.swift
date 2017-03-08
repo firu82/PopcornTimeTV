@@ -9,17 +9,17 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "Successfully authenticated with Trakt", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true)
         }
         tableView.reloadData()
         TraktManager.shared.syncUserData()
     }
     
     func authenticationDidFail(with error: NSError) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         let alert = UIAlertController(title: "Failed to authenticate with Trakt", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +103,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                     
                     alertController.preferredAction = alertController.actions.first(where: { $0.title == String(Int((UserDefaults.standard.float(forKey: "themeSongVolume") * 100.0))).appending("%") })
                     
-                    present(alertController, animated: true, completion: nil)
+                    present(alertController, animated: true)
                 } else {
                     let value = UserDefaults.standard.bool(forKey: "streamOnCellular")
                     UserDefaults.standard.set(!value, forKey: "streamOnCellular")
@@ -132,7 +132,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             }
         case 1:
             let subtitleSettings = SubtitleSettings.shared
@@ -156,7 +156,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             } else if indexPath.row == 1 {
                 let alertController = UIAlertController(title: "Subtitle Font Size", message: "Choose a font size for the player subtitles.", preferredStyle: .actionSheet, blurStyle: .dark)
                 
@@ -176,7 +176,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             } else if indexPath.row == 2 {
                 let alertController = UIAlertController(title: "Subtitle Color", message: "Choose text color for the player subtitles.", preferredStyle: .actionSheet, blurStyle: .dark)
                 
@@ -196,7 +196,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             } else if indexPath.row == 3 {
                 let alertController = UIAlertController(title: "Subtitle Font", message: "Choose a default font for the player subtitles.", preferredStyle: .actionSheet, blurStyle: .dark)
                 
@@ -219,7 +219,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             } else if indexPath.row == 4 {
                 
                 let alertController = UIAlertController(title: "Subtitle Font Style", message: "Choose a default font style for the player subtitles.", preferredStyle: .actionSheet, blurStyle: .dark)
@@ -240,7 +240,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             } else if indexPath.row == 5,
                 let path = Bundle.main.path(forResource: "EncodingTypes", ofType: "plist"),
                 let labels = NSDictionary(contentsOfFile: path) as? [String: [String]],
@@ -265,7 +265,7 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                 
                 alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
                 
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             }
         case 2 where indexPath.row == 0 :
             if TraktManager.shared.isSignedIn() {
@@ -276,11 +276,11 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                     tableView.reloadData()
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                present(alert, animated: true, completion: nil)
+                present(alert, animated: true)
             } else {
                 TraktManager.shared.delegate = self
                 let vc = TraktManager.shared.loginViewController()
-                present(vc, animated: true, completion: nil)
+                present(vc, animated: true)
             }
         case 3:
             if indexPath.row == 0 {
@@ -302,19 +302,19 @@ class SettingsTableViewController: UITableViewController, TraktManagerDelegate {
                     controller.message = "Error cleaning cache."
                     print("Error: \(error)")
                 }
-                present(controller, animated: true, completion: nil)
+                present(controller, animated: true)
             } else if indexPath.row == 1 {
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
                 let contentViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "CheckForUpdatesViewController")
                 alert.setValue(contentViewController, forKey: "contentViewController")
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                present(alert, animated: true, completion: nil)
+                present(alert, animated: true)
                 UpdateManager.shared.checkVersion(.immediately) { [weak self] success in
                     alert.dismiss(animated: true) {
                         if !success {
                             let alert = UIAlertController(title: "No Updates Available", message: "There are no updates available for Popcorn Time at this time.", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self?.present(alert, animated: true, completion: nil)
+                            self?.present(alert, animated: true)
                         }
                         tableView.reloadData() 
                     }

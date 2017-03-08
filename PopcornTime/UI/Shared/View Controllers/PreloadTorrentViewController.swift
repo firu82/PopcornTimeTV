@@ -52,7 +52,7 @@ class PreloadTorrentViewController: UIViewController {
     @IBAction func cancel() {
         PTTorrentStreamer.shared().cancelStreamingAndDeleteData(UserDefaults.standard.bool(forKey: "removeCacheOnPlayerExit"))
         shouldCancelStreaming = true
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     #if os(iOS)

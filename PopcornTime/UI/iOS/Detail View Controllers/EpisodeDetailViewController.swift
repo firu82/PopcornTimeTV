@@ -68,7 +68,7 @@ class EpisodeDetailViewController: UIViewController, UIScrollViewDelegate, UIGes
         switch sender.state {
         case .began:
             interactor.hasStarted = true
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
             scrollView.bounces = false
         case .changed:
             interactor.shouldFinish = progress > percentThreshold

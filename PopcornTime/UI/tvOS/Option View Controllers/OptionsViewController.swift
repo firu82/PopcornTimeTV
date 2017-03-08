@@ -27,7 +27,7 @@ class OptionsViewController: UIViewController, UIGestureRecognizerDelegate, UITa
     var audioViewController: AudioViewController!
 
     @IBAction func dismissOptionsViewController() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

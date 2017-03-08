@@ -62,7 +62,7 @@ class ShowsViewController: MainViewController {
             controller.popoverPresentationController?.barButtonItem = barButtonItem
         }
         
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
     
     @IBAction func showGenres(_ sender: Any) {

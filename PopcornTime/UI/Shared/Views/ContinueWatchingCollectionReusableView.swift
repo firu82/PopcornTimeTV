@@ -158,7 +158,7 @@ class ContinueWatchingCollectionReusableView: UICollectionReusableView, UICollec
             self.layoutSubviews()
         }))
             
-        parent?.present(vc, animated: true, completion: nil)
+        parent?.present(vc, animated: true)
     }
     
     // MARK: - Layout

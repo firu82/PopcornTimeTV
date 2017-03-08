@@ -105,7 +105,7 @@ class CastPlayerViewController: UIViewController, GCKRemoteMediaClientListener {
         remoteMediaClient?.stop()
         setProgress(status: .finished)
         PTTorrentStreamer.shared().cancelStreamingAndDeleteData(UserDefaults.standard.bool(forKey: "removeCacheOnPlayerExit"))
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     // MARK: - Frame changes
