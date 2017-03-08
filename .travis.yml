@@ -2,6 +2,8 @@
 language: objective-c
 osx_image: xcode8.2
 
+install: pod repo update; pod install
+
 env:
   global:
     - LC_CTYPE=en_US.UTF-8
