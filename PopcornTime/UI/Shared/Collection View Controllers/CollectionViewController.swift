@@ -60,12 +60,9 @@ class CollectionViewController: ResponsiveCollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let collectionView = collectionView, let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            if let nib = delegate?.collectionView(nibForHeaderInCollectionView: collectionView) {
-                collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "stickyHeader")
-            } else {
-                layout.sectionHeadersPinToVisibleBounds = true
-            }
+        if let collectionView = collectionView,
+            let nib = delegate?.collectionView(nibForHeaderInCollectionView: collectionView) {
+            collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "stickyHeader")
         }
     }
     

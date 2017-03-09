@@ -11,7 +11,7 @@ class ItemViewController: UIViewController {
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!
     
-    @IBOutlet var summaryTextView: UITextView!
+    @IBOutlet var summaryTextView: TVTextView!
     @IBOutlet var ratingView: FloatRatingView!
     
     @IBOutlet var trailerButton: UIButton!

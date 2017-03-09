@@ -6,11 +6,14 @@ import UIKit
     
     @IBInspectable var blurRadius: CGFloat {
         get {
-            return effect?.value(forKey: "blurRadius") as? CGFloat ?? 90
+            return blurEffect.value(forKey: "blurRadius") as? CGFloat ?? 90
         } set (radius) {
-            effect?.setValue(radius, forKey: "blurRadius")
+            blurEffect.setValue(radius, forKey: "blurRadius")
+            effect = blurEffect
         }
     }
+    
+    private var blurEffect: UIBlurEffect!
     
     override init(effect: UIVisualEffect?) {
         guard let effect = effect as? UIBlurEffect else {
@@ -18,9 +21,9 @@ import UIKit
         }
         super.init(effect: effect)
         
-        let new = sharedSetup(effect: effect)
+        sharedSetup(effect: effect)
         
-        self.effect = new
+        self.effect = blurEffect
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,12 +33,12 @@ import UIKit
             fatalError("Effect must be of class: UIBlurEffect")
         }
         
-        let new = sharedSetup(effect: effect)
+        sharedSetup(effect: effect)
         
-        self.effect = new
+        self.effect = blurEffect
     }
     
-    private func sharedSetup(effect: UIBlurEffect, radius: CGFloat = 90) -> UIBlurEffect {
+    private func sharedSetup(effect: UIBlurEffect, radius: CGFloat = 90) {
         let UICustomBlurEffect = NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type
         let raw = effect.value(forKey: "_style") as! Int
         let style = UIBlurEffectStyle(rawValue: raw)!
@@ -45,6 +48,6 @@ import UIKit
         effect.setValue(radius, forKey: "blurRadius")
         effect.setValue(UIColor.clear, forKey: "colorTint")
         
-        return effect
+        self.blurEffect = effect
     }
 }

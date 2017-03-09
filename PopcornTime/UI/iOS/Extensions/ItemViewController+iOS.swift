@@ -4,6 +4,8 @@ import Foundation
 import PopcornKit
 import XCDYouTubeKit
 
+typealias TVTextView = UITextView
+
 extension ItemViewController {
     
     override func viewDidLoad() {

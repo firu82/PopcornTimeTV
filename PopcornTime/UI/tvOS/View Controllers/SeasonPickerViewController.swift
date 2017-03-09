@@ -10,7 +10,6 @@ protocol SeasonPickerViewControllerDelegate: class {
 class SeasonPickerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var showLabel: UILabel!
-    @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet var collectionViewContainerViewWidthConstraint: NSLayoutConstraint!
@@ -26,10 +25,6 @@ class SeasonPickerViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         
         showLabel.text = show.title
-        
-        if let image = show.smallBackgroundImage, let url = URL(string: image) {
-            backgroundImageView.af_setImage(withURL: url)
-        }
         
         seasons = show.seasonNumbers.flatMap({($0, nil)})
         

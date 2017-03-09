@@ -170,7 +170,7 @@ class ContinueWatchingCollectionReusableView: UICollectionReusableView, UICollec
         invalidateIntrinsicContentSize()
         
         if let parentCollectionView = self.superview as? UICollectionView {
-            parentCollectionView.performBatchUpdates(nil)
+            parentCollectionView.collectionViewLayout.invalidateLayout()
         }
     }
     

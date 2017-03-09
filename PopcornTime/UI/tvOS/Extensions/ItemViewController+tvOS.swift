@@ -17,6 +17,7 @@ extension ItemViewController: UIViewControllerTransitioningDelegate {
         watchlistButton?.setImage(watchlistButtonImage, for: .normal)
         watchedButton?.setImage(watchedButtonImage, for: .normal)
         
+        summaryTextView.buttonWasPressed = moreButtonWasPressed
         summaryTextView.text = media.summary
         
         if let movie = media as? Movie {
@@ -163,11 +164,23 @@ extension ItemViewController: UIViewControllerTransitioningDelegate {
         dismiss(animated: true)
     }
     
+    func moreButtonWasPressed(text: String?) {
+        let viewController = UIStoryboard.main.instantiateViewController(withIdentifier: "TVDescriptionViewController") as! TVDescriptionViewController
+        viewController.loadView()
+        viewController.titleLabel.text = media.title
+        viewController.textView.text = text
+        viewController.transitioningDelegate = self
+        viewController.modalPresentationStyle = .custom
+        present(viewController, animated: true)
+    }
+    
     // MARK: - Presentation
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if presented is AVPlayerViewController {
             return TVFadeToBlackAnimatedTransitioning(isPresenting: true)
+        } else if presented is TVDescriptionViewController {
+            return TVBlurOverCurrentContextAnimatedTransitioning(isPresenting: true)
         }
         return nil
         
@@ -176,6 +189,8 @@ extension ItemViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if dismissed is AVPlayerViewController {
             return TVFadeToBlackAnimatedTransitioning(isPresenting: false)
+        } else if dismissed is TVDescriptionViewController {
+            return TVBlurOverCurrentContextAnimatedTransitioning(isPresenting: false)
         }
         return nil
     }

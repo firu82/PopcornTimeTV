@@ -273,6 +273,9 @@
 		4DE9E06A1E3D0DC300806522 /* SeparatorCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9E0691E3D0DC300806522 /* SeparatorCollectionViewLayout.swift */; };
 		4DE9E06C1E3D12E600806522 /* UICollectionViewLayoutAttributes+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9E06B1E3D12E600806522 /* UICollectionViewLayoutAttributes+Color.swift */; };
 		4DF5D8AF1E69D34B000B4A3C /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF5D8AE1E69D34B000B4A3C /* UIDevice+Extension.swift */; };
+		4DFA77161E71FECC007DB0E7 /* TVTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA77151E71FECC007DB0E7 /* TVTextView.swift */; };
+		4DFA77181E720848007DB0E7 /* TVBlurOverCurrentContextAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA77171E720848007DB0E7 /* TVBlurOverCurrentContextAnimatedTransitioning.swift */; };
+		4DFA771A1E720BD2007DB0E7 /* TVDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA77191E720BD2007DB0E7 /* TVDescriptionViewController.swift */; };
 		C13AAE5F5C0B7B2A2EADE6D7 /* Pods_PopcornTimetvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F58921BC4D7FCD5EA29325 /* Pods_PopcornTimetvOS.framework */; };
 		EEEA016252AB0C29FBA7B554 /* Pods_PopcornKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA105EEC765A7BAF4B04611 /* Pods_PopcornKit_iOS.framework */; };
 		FBC7CC598DEFD1909064625E /* Pods_PopcornTimeiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39DBC9A881608E11694A746 /* Pods_PopcornTimeiOS.framework */; };
@@ -537,6 +540,9 @@
 		4DE9E0691E3D0DC300806522 /* SeparatorCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeparatorCollectionViewLayout.swift; path = "Collection View Layouts/SeparatorCollectionViewLayout.swift"; sourceTree = "<group>"; };
 		4DE9E06B1E3D12E600806522 /* UICollectionViewLayoutAttributes+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayoutAttributes+Color.swift"; sourceTree = "<group>"; };
 		4DF5D8AE1E69D34B000B4A3C /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		4DFA77151E71FECC007DB0E7 /* TVTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVTextView.swift; sourceTree = "<group>"; };
+		4DFA77171E720848007DB0E7 /* TVBlurOverCurrentContextAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TVBlurOverCurrentContextAnimatedTransitioning.swift; path = "Presentation Controllers/TVBlurOverCurrentContextAnimatedTransitioning.swift"; sourceTree = "<group>"; };
+		4DFA77191E720BD2007DB0E7 /* TVDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TVDescriptionViewController.swift; path = "View Controllers/TVDescriptionViewController.swift"; sourceTree = "<group>"; };
 		4F3B56E351FCF49BA32DCB20 /* Pods-PopcornTimeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTimeiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTimeiOS/Pods-PopcornTimeiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		59BE8A67A9D4954F63D16C0E /* Pods-PopcornTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.debug.xcconfig"; sourceTree = "<group>"; };
 		5AFC393C8DD38442036DFF31 /* Pods-PopcornTimetvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTimetvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTimetvOS/Pods-PopcornTimetvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -958,6 +964,7 @@
 			isa = PBXGroup;
 			children = (
 				4D99954E1E5C7B45005C432A /* TVLoadingViewController.swift */,
+				4DFA77191E720BD2007DB0E7 /* TVDescriptionViewController.swift */,
 				4D9995771E5DCE7B005C432A /* SeasonPickerViewController.swift */,
 				4D0E130D1E671E050000AD65 /* TVTabBarController.swift */,
 				4D0F9E381E705A7600860852 /* TVNavigationController.swift */,
@@ -1029,6 +1036,7 @@
 			children = (
 				4D9DEF071E705DA0002493B5 /* OptionsPresentationController.swift */,
 				4D0F9E341E705A3E00860852 /* TVFadeToBlackAnimatedTransitioning.swift */,
+				4DFA77171E720848007DB0E7 /* TVBlurOverCurrentContextAnimatedTransitioning.swift */,
 				4D0F9E351E705A3E00860852 /* TVAppDocumentControllerAnimatedTransitioning.swift */,
 			);
 			name = "Presentation Controllers";
@@ -1111,6 +1119,7 @@
 			isa = PBXGroup;
 			children = (
 				4D0F9E3E1E705B0800860852 /* TVVisualEffectView.swift */,
+				4DFA77151E71FECC007DB0E7 /* TVTextView.swift */,
 				4DD6E4D11DFB197E00818A2C /* BufferingBar.swift */,
 				4DD6E4CF1DFB17B400818A2C /* ProgressBar.swift */,
 				4D9995521E5C7E68005C432A /* LoadingView.xib */,
@@ -1659,11 +1668,13 @@
 				4DAFAA3B1E0AFDA600AE0F9A /* OptionsStackViewController.swift in Sources */,
 				4D0E130B1E6709EB0000AD65 /* UICollectionViewController+Extension.swift in Sources */,
 				4D784D5C1E5FA4B9009E3423 /* NSMutableString+Extension.swift in Sources */,
+				4DFA77161E71FECC007DB0E7 /* TVTextView.swift in Sources */,
 				4D0F9E191E70582A00860852 /* PCTPlayerViewController.swift in Sources */,
 				4D9DEF081E705DA0002493B5 /* OptionsPresentationController.swift in Sources */,
 				4D0F9DDD1E7056DF00860852 /* CoverCollectionViewCell.swift in Sources */,
 				4D0F9E171E70582A00860852 /* ItemViewController.swift in Sources */,
 				4D7C7E201E6C386C0095D0DF /* NSObject+Swift_Observer.m in Sources */,
+				4DFA77181E720848007DB0E7 /* TVBlurOverCurrentContextAnimatedTransitioning.swift in Sources */,
 				4D0F9DF51E70579C00860852 /* UpNextView.swift in Sources */,
 				4D5624781E58680A00488712 /* PCTPlayerViewController+MediaPlayer.swift in Sources */,
 				4D0F9DF81E70579C00860852 /* ErrorBackgroundView.swift in Sources */,
@@ -1689,6 +1700,7 @@
 				4D0F9E491E705BD100860852 /* UIView+Extension.swift in Sources */,
 				4D0F9DEB1E70573A00860852 /* DescriptionCollectionViewController.swift in Sources */,
 				4DD6E4D21DFB197E00818A2C /* BufferingBar.swift in Sources */,
+				4DFA771A1E720BD2007DB0E7 /* TVDescriptionViewController.swift in Sources */,
 				4DD6E4D71DFB315100818A2C /* SiriRemoteGestureRecogniser.swift in Sources */,
 				4D0F9E3C1E705AA100860852 /* SearchViewController+tvOS.swift in Sources */,
 				4D0F9DF71E70579C00860852 /* LoadingView.swift in Sources */,
