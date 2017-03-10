@@ -7,8 +7,17 @@ import PopcornKit
 
 extension ItemViewController: UIViewControllerTransitioningDelegate {
     
-    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+    private var visibleButtons: [UIButton] {
         return [trailerButton, playButton, seasonsButton, watchlistButton, watchedButton].flatMap({$0}).filter({$0.superview != nil})
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        environmentsToFocus = visibleButtons
+        
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
     }
     
     override func viewDidLoad() {
@@ -19,6 +28,7 @@ extension ItemViewController: UIViewControllerTransitioningDelegate {
         
         summaryTextView.buttonWasPressed = moreButtonWasPressed
         summaryTextView.text = media.summary
+        
         
         if let movie = media as? Movie {
             titleLabel.text = ""
@@ -172,6 +182,12 @@ extension ItemViewController: UIViewControllerTransitioningDelegate {
         viewController.transitioningDelegate = self
         viewController.modalPresentationStyle = .custom
         present(viewController, animated: true)
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let next = context.nextFocusedView {
+            environmentsToFocus = [next]
+        }
     }
     
     // MARK: - Presentation

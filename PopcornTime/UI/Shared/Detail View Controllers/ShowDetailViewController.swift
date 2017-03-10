@@ -133,19 +133,4 @@ class ShowDetailViewController: DetailViewController {
         episodesCollectionViewController.dataSource = show.episodes.filter({$0.season == season}).sorted(by: {$0.0.episode < $0.1.episode})
         episodesCollectionViewController.collectionView?.reloadData()
     }
-    
-    override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if presented is SeasonPickerViewController {
-            return TVBlurOverCurrentContextAnimatedTransitioning(isPresenting: true)
-        }
-        return super.animationController(forPresented: presented, presenting: presenting, source: source)
-        
-    }
-    
-    override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if dismissed is SeasonPickerViewController {
-            return TVBlurOverCurrentContextAnimatedTransitioning(isPresenting: false)
-        }
-        return super.animationController(forDismissed: dismissed)
-    }
 }

@@ -33,6 +33,13 @@ class ItemViewController: UIViewController {
     
     @IBOutlet var peopleTextView: UITextView?
     
+    var environmentsToFocus: [UIFocusEnvironment] = []
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        defer { environmentsToFocus.removeAll() }
+        return environmentsToFocus.isEmpty ? super.preferredFocusEnvironments : environmentsToFocus
+    }
+    
     var media: Media!
     
     @IBAction func play(_ sender: UIButton) {

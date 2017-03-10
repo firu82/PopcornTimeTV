@@ -605,10 +605,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="HRY-ro-oJ0" customClass="TVTextView" customModule="PopcornTime" customModuleProvider="target">
-                                <rect key="frame" x="346" y="138" width="920" height="157"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HRY-ro-oJ0" customClass="TVTextView" customModule="PopcornTime" customModuleProvider="target">
+                                <rect key="frame" x="349" y="138" width="920" height="157"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="157" placeholder="YES" id="LPI-s1-vtc"/>
                                     <constraint firstAttribute="width" constant="920" id="NlI-kE-zDz"/>
                                 </constraints>
                             </view>
@@ -682,7 +683,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fzp-40-kz2" firstAttribute="top" secondItem="HRY-ro-oJ0" secondAttribute="bottom" constant="40" id="0gc-Wc-mO8"/>
+                            <constraint firstItem="fzp-40-kz2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HRY-ro-oJ0" secondAttribute="bottom" constant="40" id="0gc-Wc-mO8"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="pKc-6J-X3N" secondAttribute="trailing" constant="15" id="2cj-qV-KsX"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fzp-40-kz2" secondAttribute="trailing" constant="15" id="3uA-Tx-Rn3"/>
                             <constraint firstItem="pKc-6J-X3N" firstAttribute="leading" secondItem="xWm-gZ-npz" secondAttribute="trailing" constant="25" id="4Jk-TC-thV"/>
@@ -693,7 +694,7 @@
                             <constraint firstItem="25c-aU-nsO" firstAttribute="leading" secondItem="Abn-cm-wmU" secondAttribute="trailing" constant="23" id="Jzo-J4-wk7"/>
                             <constraint firstItem="xWm-gZ-npz" firstAttribute="leading" secondItem="25c-aU-nsO" secondAttribute="leading" id="KOU-OQ-web"/>
                             <constraint firstItem="25c-aU-nsO" firstAttribute="top" secondItem="QKV-jZ-0rs" secondAttribute="topMargin" id="UYN-Nu-Rfi"/>
-                            <constraint firstItem="HRY-ro-oJ0" firstAttribute="leading" secondItem="RTE-V9-Wtj" secondAttribute="leading" constant="-15" id="UgK-uD-3Ww"/>
+                            <constraint firstItem="HRY-ro-oJ0" firstAttribute="leading" secondItem="RTE-V9-Wtj" secondAttribute="leading" constant="-12" id="UgK-uD-3Ww"/>
                             <constraint firstItem="xWm-gZ-npz" firstAttribute="top" secondItem="25c-aU-nsO" secondAttribute="bottom" id="VC6-Mt-rwe"/>
                             <constraint firstItem="pKc-6J-X3N" firstAttribute="centerY" secondItem="xWm-gZ-npz" secondAttribute="centerY" id="efb-7Q-f80"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Abn-cm-wmU" secondAttribute="bottomMargin" constant="-15" id="i4Y-Wt-eoh"/>
